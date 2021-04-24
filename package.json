@@ -21,7 +21,8 @@
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
-    "@types/material-ui": "^0.21.8"
+    "@types/material-ui": "^0.21.8",
+    "prettier": "2.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
