@@ -1,13 +1,9 @@
-import React from "react";
-
-// Material UI imports
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-
-// App helper functin imports
-import cellStyles from "../helpers/cellStyles";
+import type { ReactElement } from "react";
+import { useMediaQuery } from "@material-ui/core";
+import { cellStyles } from "helpers";
 
 // Component for each Cell Component of the main Grid
-export default function GridCell({
+export function CellComponent({
   id,
   row,
   col,
@@ -22,7 +18,7 @@ export default function GridCell({
   selectShape,
   dropShape,
   mouseDown
-}) {
+}: Props): ReactElement {
   const mobile = useMediaQuery("(max-width: 1023px)");
 
   const cellSize = mobile ? "24px" : "3.5vh",
@@ -65,4 +61,21 @@ export default function GridCell({
       />
     </div>
   );
+}
+
+interface Props {
+  id: string;
+  row: number;
+  col: number;
+  active: boolean;
+  wasActive: boolean;
+  toggleActive: any;
+  hoverPoint: any;
+  setHoverPoint: any;
+  hovered: boolean;
+  dragging: boolean;
+  setDrag: any;
+  selectShape: any;
+  dropShape: any;
+  mouseDown: any;
 }

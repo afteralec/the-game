@@ -1,16 +1,11 @@
-import React from "react";
-
-// Material UI imports
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-
-// App Component imports
-import GridCell from "./GridCell;
-
-// App helper imports
-import splitId from "../helpers/splitId";
+import { useMediaQuery } from "@material-ui/core";
+import { CellComponent as Cell } from "./cell";
+import { splitID } from "helpers";
+import type { Grid } from "types";
+import type { ReactElement } from "react";
 
 // Component to render the main Grid
-export default function Grid({
+export function GridComponent({
   grid,
   toggleActive,
   hoverPoint,
@@ -22,7 +17,7 @@ export default function Grid({
   dropShape,
   tour,
   mouseDown
-}) {
+}: Props): ReactElement {
   const mobile = useMediaQuery("(max-width: 1023px)"),
     portrait = useMediaQuery("(orientation: portrait)");
 
@@ -42,7 +37,7 @@ export default function Grid({
 
         const touch = event.touches[0];
 
-        const id = document.elementFromPoint(touch.clientX, touch.clientY).id;
+        const id = document.elementFromPoint(touch.clientX, touch.clientY)?.id;
 
         if (!id) return;
 
@@ -50,7 +45,7 @@ export default function Grid({
 
         if (!dragging) return;
 
-        const [row, col] = splitId(id);
+        const [row, col] = splitID(id);
 
         if (row === hoverPoint.row && col === hoverPoint.col) return;
         setHoverPoint({ row, col });
@@ -65,7 +60,7 @@ export default function Grid({
           }}
         >
           {row.map((cell) => (
-            <GridCell
+            <Cell
               // Render a Cell component for each Cell object in the grid
               key={cell.id}
               {...cell}
@@ -84,4 +79,18 @@ export default function Grid({
       ))}
     </div>
   );
+}
+
+interface Props {
+  grid: Grid;
+  toggleActive: any;
+  hoverPoint: any;
+  setHoverPoint: any;
+  hoverShape: any;
+  dragging: any;
+  setDrag: any;
+  selectShape: any;
+  dropShape: any;
+  tour: any;
+  mouseDown: boolean;
 }
