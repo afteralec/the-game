@@ -1,46 +1,57 @@
-# Getting Started with Create React App
+# Conway's Game of Life - a React App Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In a hurry? Visit the app directly at <https://thegame.wtf/>
 
-## Available Scripts
+The Game of Life is an algorithm meant to imitate cellular reproduction devised by the British mathematician John Conway in 1970.
 
-In the project directory, you can run:
+It is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. You play the Game of Life by creating an initial state of the field and watching what happens.
 
-### `npm start`
+You'll find pre-determined shapes in the drawer at the top; drag and drop these onto the grid to start. The controls on the left guide the game, and the slider on the right controls the speed.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## The Game
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+[Click here to visit the app!](https://thegame.wtf/)
 
-### `npm test`
+Select **_Take a Tour_** for the in-app tour.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## The Game is played on the central grid
 
-### `npm run build`
+![The Game is played on the central grid](images/readme-1.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Most of the action takes place here: the main grid of 1,000 cells.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Click each cell to toggle it from inactive to active and back
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Click each cell to toggle it from inactive to active and back](images/readme-2.gif)
 
-### `npm run eject`
+You can also hold down the mouse and "paint" over multiple cells to set them all at once!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Use the `Play` and `Pause` buttons to play and pause the Game
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Use the `Play` and `Pause` buttons to play and pause the Game](images/readme-3.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+After setting any initial state you like, these buttons control the Game itself. You can change the state of the game at any point while paused.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Reset the grid with the `Clear` button
 
-## Learn More
+![Reset the grid with the `Clear` button](images/readme-4.gif)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This will empty the grid and reset its history, ready for a new initial state
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Try the Random button for a completely random initial state!
+
+## The `Forward` and `Back` buttons push the game one step in time forward and back, respectively
+
+![The `Forward` and `Back` buttons push the game one step in time forward and back, respectively](images/readme-5.gif)
+
+## Pre-determined shapes can be found in the `Shapes` drawer at the top of the interface
+
+![Pre-determined shapes can be found in the `Shapes` drawer at the top of the interface](images/readme-6.gif)
+
+Each shape on its own creates interesting patterns (some going on forever) but can be combined - drag and drop them onto the grid to set them as part of an initial state.
+
+## Control the speed of each step with the `Speed` slider in the bottom right hand corner
+
+![Control the speed of each step with the `Speed` slider in the bottom right hand corner](images/readme-7.gif)
+
+The slider can be changed at any time, even while the Game is being played
