@@ -4,7 +4,7 @@ import React from "react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 // App Component imports
-import GridCell from "./GridCell";
+import GridCell from "./GridCell;
 
 // App helper imports
 import splitId from "../helpers/splitId";

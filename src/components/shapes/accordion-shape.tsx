@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
 
 // App Component Imports
-import ShapeGrid from "./ShapeGrid";
+import ShapeGrid from "./shape-grid";
 
 // App helper function imports
 import splitId from "../helpers/splitId";
