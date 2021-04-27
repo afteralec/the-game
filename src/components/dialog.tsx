@@ -1,14 +1,12 @@
-// Main app dialog component
-import React from "react";
-
-// Material UI Component Imports
 import { withStyles } from "@material-ui/core/styles";
-import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import MuiDialogContent from "@material-ui/core/DialogContent";
-import MuiDialogActions from "@material-ui/core/DialogActions";
-import IconButton from "@material-ui/core/IconButton";
+import {
+  DialogTitle as MUIDialogTitle,
+  DialogContent as MUIDialogContent,
+  DialogActions as MUIDialogActions,
+  IconButton,
+  Typography
+} from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import Typography from "@material-ui/core/Typography";
 
 // Styles from Material UI for use with withStyles()
 const styles = (theme) => ({
@@ -29,7 +27,7 @@ const styles = (theme) => ({
 export const DialogTitle = withStyles(styles)(
   ({ children, classes, onClose, ...other }) => {
     return (
-      <MuiDialogTitle disableTypography className={classes.root} {...other}>
+      <MUIDialogTitle disableTypography className={classes.root} {...other}>
         <Typography variant="h6">{children}</Typography>
         {onClose ? (
           <IconButton
@@ -40,7 +38,7 @@ export const DialogTitle = withStyles(styles)(
             <CloseIcon />
           </IconButton>
         ) : null}
-      </MuiDialogTitle>
+      </MUIDialogTitle>
     );
   }
 );
@@ -50,7 +48,7 @@ export const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2)
   }
-}))(MuiDialogContent);
+}))(MUIDialogContent);
 
 // Dialog Actions
 export const DialogActions = withStyles((theme) => ({
@@ -58,4 +56,4 @@ export const DialogActions = withStyles((theme) => ({
     margin: 0,
     padding: theme.spacing(1)
   }
-}))(MuiDialogActions);
+}))(MUIDialogActions);

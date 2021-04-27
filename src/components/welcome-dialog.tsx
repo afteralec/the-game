@@ -1,15 +1,9 @@
-import React from "react";
-
-// Material UI Component Imports
-import Button from "@material-ui/core/Button";
-import Dialog from "@material-ui/core/Dialog";
-import Typography from "@material-ui/core/Typography";
-
-// App Component imports
-import { DialogTitle, DialogContent, DialogActions } from "./AppDialog";
+import type { Dispatch, SetStateAction } from "react";
+import { Button, Dialog, Typography } from "@material-ui/core";
+import { DialogTitle, DialogContent, DialogActions } from "./dialog";
 
 // Welcome Dialog for the app home page
-export default function WelcomeDialog({ open, setOpen, setTourStep }) {
+export default function WelcomeDialog({ open, setOpen, setTourStep }: Props) {
   return (
     <div>
       <Dialog
@@ -17,12 +11,7 @@ export default function WelcomeDialog({ open, setOpen, setTourStep }) {
         aria-labelledby="customized-dialog-title"
         open={open}
       >
-        <DialogTitle
-          id="customized-dialog-title"
-          onClose={() => setOpen(false)}
-        >
-          Welcome to the Game!
-        </DialogTitle>
+        <DialogTitle>Welcome to the Game!</DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
             The Game of Life is an algorithm meant to imitate cellular
@@ -58,4 +47,10 @@ export default function WelcomeDialog({ open, setOpen, setTourStep }) {
       </Dialog>
     </div>
   );
+}
+
+interface Props {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  setTourStep: Dispatch<SetStateAction<number>>;
 }
