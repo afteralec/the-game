@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from "react";
-
-// Material UI imports
+import { useState, useEffect } from "react";
+import type { Dispatch, SetStateAction, SyntheticEvent } from "react";
+import type { Grid } from "types";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-// import Button from "@material-ui/core/Button";
-// import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Fab from "@material-ui/core/Fab";
@@ -16,15 +14,9 @@ import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
 import PauseRoundedIcon from "@material-ui/icons/PauseRounded";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import CasinoRoundedIcon from "@material-ui/icons/Casino";
-
-// App data imports
-import seeds from "../data/seeds";
-
-// App helper imports
-import renderSpeed from "../helpers/renderSpeed";
-
-// App script imports
-import generateGrid from "../scripts/generateGrid";
+import { seeds } from "data";
+import { renderSpeed } from "helpers";
+import { generateGrid } from "scripts";
 
 const useStyles = makeStyles(() => ({
   appBar: {
@@ -48,19 +40,16 @@ const useStyles = makeStyles(() => ({
 
 // Component for all the controls for the game
 export default function Controls({
-  style,
   playing,
   pause,
   play,
   clear,
-  step,
-  back,
   setTimeStep,
   tour,
   setTourStep,
   setGrid,
   setDrawerOpen
-}) {
+}: Props) {
   const [sliderValue, setSliderValue] = useState(50),
     [playOnSliderMouseUp, setPlayOnSliderMouseUp] = useState(false);
 
@@ -89,7 +78,7 @@ export default function Controls({
   }
 
   // Function called when the slider value changes
-  function sliderChange(event, value) {
+  function sliderChange(event: SyntheticEvent, value: string) {
     event.preventDefault();
 
     setSliderValue(value);
@@ -338,4 +327,16 @@ export default function Controls({
   //     </div>
   //   </div>
   // );
+}
+
+interface Props {
+  playing: boolean;
+  pause: () => void;
+  play: () => void;
+  clear: () => void;
+  setTimeStep: Dispatch<SetStateAction<number>>;
+  tour: boolean;
+  setTourStep: Dispatch<SetStateAction<number>>;
+  setGrid: Dispatch<SetStateAction<Grid>>;
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }
