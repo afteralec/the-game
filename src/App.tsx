@@ -6,7 +6,7 @@ import {
   ShapesDrawer,
   AccordionShape,
   WelcomeDialog,
-  AppSnackbar
+  Snackbar
 } from "components";
 import { shapes, seeds } from "data";
 import { splitID } from "helpers";
@@ -316,7 +316,7 @@ export default function App() {
         setTourStep={setTourStep}
       />
 
-      <AppSnackbar key={snackbar.message} close={closeSnackbar} {...snackbar} />
+      <Snackbar key={snackbar.message} close={closeSnackbar} {...snackbar} />
     </>
   );
 }
