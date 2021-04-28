@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 // Component to render the Accordion of prebuilt shapes at the top of the UI
-export default function ShapesAccordion({
+export function ShapesAccordion({
   renderedAccordionShapes,
   drawerOpen,
   setDrawerOpen,

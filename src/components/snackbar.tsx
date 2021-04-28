@@ -8,7 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 
 // Component to be used for any snackbar update to the user
-export default function AppSnackbar({
+export function AppSnackbar({
   key,
   anchorOrigin = { vertical: "top", horizontal: "center" },
   autoHideDuration,

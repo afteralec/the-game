@@ -39,7 +39,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 // Component for all the controls for the game
-export default function Controls({
+export function Controls({
   playing,
   pause,
   play,

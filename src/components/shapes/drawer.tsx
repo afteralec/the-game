@@ -4,7 +4,7 @@ import React from "react";
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Drawer from "@material-ui/core/Drawer";
 
-export default function ShapesDrawer({
+export function ShapesDrawer({
   renderedAccordionShapes,
   drawerOpen,
   setDrawerOpen,

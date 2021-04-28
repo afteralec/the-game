@@ -13,7 +13,7 @@ import splitId from "../helpers/splitId";
 import generateGrid from "../scripts/generateGrid";
 import { renderAccordionShape } from "../scripts/renderShape";
 
-export default function AccordionShape({
+export function AccordionShape({
   rows,
   cols,
   center,

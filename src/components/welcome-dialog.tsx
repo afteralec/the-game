@@ -3,7 +3,7 @@ import { Button, Dialog, Typography } from "@material-ui/core";
 import { DialogTitle, DialogContent, DialogActions } from "./dialog";
 
 // Welcome Dialog for the app home page
-export default function WelcomeDialog({ open, setOpen, setTourStep }: Props) {
+export function WelcomeDialog({ open, setOpen, setTourStep }: Props) {
   return (
     <div>
       <Dialog
