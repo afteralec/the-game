@@ -4,7 +4,7 @@ import React from "react";
 import ShapeGridCell from "./shape-grid-cell";
 
 // Component to render a smaller grid for a Shape, the prebuilt states that go in the Shapes drawer
-export default function ShapeGrid({
+export function ShapeGrid({
   grid,
   shape,
   setExpanded,

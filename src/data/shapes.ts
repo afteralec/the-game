@@ -1,4 +1,4 @@
-export const shapes = {
+export const shapes: { [name: string]: Shape } = {
   acorn: {
     accordion: {
       rows: 3,
@@ -78,7 +78,6 @@ export const shapes = {
   // },
 
   glider: {
-    accordion: {},
     rows: 3,
     cols: 3,
     center: { row: 1, col: 1 },
@@ -157,7 +156,6 @@ export const shapes = {
   },
 
   pentaDecathlon: {
-    accordion: {},
     rows: 3,
     cols: 10,
     center: { row: 1, col: 4 },
@@ -180,7 +178,6 @@ export const shapes = {
   },
 
   pentomino: {
-    accordion: {},
     rows: 3,
     cols: 3,
     center: { row: 1, col: 1 },
@@ -196,7 +193,6 @@ export const shapes = {
   },
 
   spaceship: {
-    accordion: {},
     rows: 4,
     cols: 5,
     center: { row: 2, col: 2 },
@@ -218,5 +214,22 @@ export const shapes = {
     ]
   }
 };
+
+interface Shape {
+  accordion?: AccordionShape;
+  rows: number;
+  cols: number;
+  center: { row: number; col: number };
+  name: string;
+  label: string;
+  coords: [number, number][];
+}
+
+interface AccordionShape {
+  rows: number;
+  cols: number;
+  center: { row: number; col: number };
+  coords: [number, number][];
+}
 
 export default shapes;

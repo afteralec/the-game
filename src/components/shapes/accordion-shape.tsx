@@ -1,17 +1,8 @@
-import React, { useState } from "react";
-
-// Material UI Component Imports
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-
-// App Component Imports
-import ShapeGrid from "./shape-grid";
-
-// App helper function imports
-import splitId from "../helpers/splitId";
-
-// App script imports
-import generateGrid from "../scripts/generateGrid";
-import { renderAccordionShape } from "../scripts/renderShape";
+import { useState } from "react";
+import { AccordionDetails } from "@material-ui/core";
+import { ShapeGrid } from "./shape-grid";
+import { splitID } from "helpers";
+import { generateGrid, renderAccordionShape } from "scripts";
 
 export function AccordionShape({
   rows,
@@ -35,7 +26,7 @@ export function AccordionShape({
   const grid = generateGrid(rows, cols, name);
 
   for (const id in renderAccordionShape(center, name, name)) {
-    const [row, col] = splitId(id);
+    const [row, col] = splitID(id);
 
     if (!grid[row]) continue;
     if (!grid[row][col]) continue;
