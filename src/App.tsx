@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import type { ReactElement } from "react";
 import { useMediaQuery, CssBaseline } from "@material-ui/core";
 import {
   GridComponent as Grid,
@@ -6,11 +7,12 @@ import {
   ShapesDrawer,
   AccordionShape,
   WelcomeDialog,
-  Snackbar
+  SnackbarComponent as Snackbar
 } from "components";
 import { shapes, seeds } from "data";
 import { splitID } from "helpers";
 import { renderShape, generateGrid, handleTourStep } from "scripts";
+import type { Shape, Snackbar as SnackbarType } from "types";
 
 export default function App() {
   const [playing, setPlaying] = useState(false),
@@ -22,7 +24,7 @@ export default function App() {
     [dragging, setDrag] = useState(false),
     [drawerOpen, setDrawerOpen] = useState(false),
     [welcomeOpen, setWelcomeOpen] = useState(true),
-    [snackbar, setSnackbar] = useState({}),
+    [snackbar, setSnackbar] = useState<SnackbarType>({}),
     [tourStep, setTourStep] = useState(0);
 
   const mobile = useMediaQuery("(max-width: 1023px)");
@@ -115,24 +117,24 @@ export default function App() {
   }
 
   // Function to encapsulate moving the game back one time step
-  function back() {
-    const newGrid = [...grid];
+  // function back() {
+  //   const newGrid = [...grid];
 
-    for (const row of newGrid) {
-      for (const cell of row) {
-        cell.back();
-      }
-    }
+  //   for (const row of newGrid) {
+  //     for (const cell of row) {
+  //       cell.back();
+  //     }
+  //   }
 
-    setGrid(newGrid);
-  }
+  //   setGrid(newGrid);
+  // }
 
   // Function to encapsulate toggling an individual cell;
   //   only intended to be use on a single click - not on each time step
-  function toggleActive(id) {
+  function toggleActive(id: string) {
     const newGrid = [...grid],
       pos = splitID(id),
-      cell = newGrid[pos[0]][pos[1]];
+      cell = newGrid[+pos[0]][+pos[1]];
 
     cell.wasActive = cell.active;
     cell.active = !cell.active;
@@ -142,13 +144,13 @@ export default function App() {
   }
 
   // Function to "drop" a shape from the custom drag, contained in state selectedShape
-  function dropShape(row, col) {
+  function dropShape() {
     for (const id in renderShape(hoverPoint, selectedShape)) {
-      const [row, col] = splitId(id);
+      const [row, col] = splitID(id);
 
-      if (!grid[row][col]) continue;
+      if (!grid[+row][+col]) continue;
 
-      grid[row][col].active = true;
+      grid[+row][+col].active = true;
     }
 
     setGrid(grid);
@@ -156,15 +158,17 @@ export default function App() {
 
   // Function to create an array of components for the drawer of prebuilt shapes
   //   at the top of the UI
-  function renderAccordionShapes(shapes) {
+  function renderAccordionShapes(shapes: {
+    [index: string]: Shape;
+  }): ReactElement[] {
     const renderedShapes = [];
     let rule = false;
 
     // Iterate each key in the shapes object
     for (const shape in shapes) {
-      const rows = shapes[shape].accordion.rows || shapes[shape].rows,
-        cols = shapes[shape].accordion.cols || shapes[shape].cols,
-        center = shapes[shape].accordion.center || shapes[shape].center;
+      const rows = shapes[shape].accordion?.rows || shapes[shape].rows,
+        cols = shapes[shape].accordion?.cols || shapes[shape].cols,
+        center = shapes[shape].accordion?.center || shapes[shape].center;
 
       // Render a <hr> element before every shape after the first
       if (rule) renderedShapes.push(<hr key={`rule-${shapes[shape].name}`} />);
@@ -180,11 +184,11 @@ export default function App() {
           label={shapes[shape].label}
           setExpanded={setDrawerOpen}
           selectShape={selectShape}
-          dropShape={dropShape}
-          setHoverPoint={setHoverPoint}
+          // dropShape={dropShape}
+          // setHoverPoint={setHoverPoint}
           dragging={dragging}
           setDrag={setDrag}
-          rule={rule}
+          // rule={rule}
           tour={tourStep === 6}
           setTourStep={setTourStep}
         />
@@ -208,7 +212,7 @@ export default function App() {
           alignItems: "center",
           cursor: dragging ? "grabbing" : "auto",
           overflow: mobile ? "hidden" : "",
-          position: mobile ? "fixed" : ""
+          position: mobile ? "fixed" : undefined
         }}
         onTouchStart={(event) => {
           event.preventDefault();
@@ -265,8 +269,8 @@ export default function App() {
           renderedAccordionShapes={renderAccordionShapes(shapes)}
           drawerOpen={drawerOpen}
           setDrawerOpen={setDrawerOpen}
-          tour={tourStep === 6}
-          setTourStep={setTourStep}
+          // tour={tourStep === 6}
+          // setTourStep={setTourStep}
         />
 
         <Grid
@@ -295,9 +299,9 @@ export default function App() {
           play={play}
           pause={pause}
           clear={clear}
-          step={step}
-          back={back}
-          timeStep={timeStep}
+          // step={step}
+          // back={back}
+          // timeStep={timeStep}
           setTimeStep={setTimeStep}
           tour={{
             play: tourStep === 4,
@@ -316,7 +320,11 @@ export default function App() {
         setTourStep={setTourStep}
       />
 
-      <Snackbar key={snackbar.message} close={closeSnackbar} {...snackbar} />
+      <Snackbar
+        key={snackbar.message || ""}
+        close={closeSnackbar}
+        {...snackbar}
+      />
     </>
   );
 }

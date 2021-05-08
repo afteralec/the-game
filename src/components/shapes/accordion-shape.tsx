@@ -1,4 +1,5 @@
 import { useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { AccordionDetails } from "@material-ui/core";
 import { ShapeGrid } from "./shape-grid";
 import { splitID } from "helpers";
@@ -12,13 +13,11 @@ export function AccordionShape({
   label,
   setExpanded,
   selectShape,
-  dropShape,
-  setHoverPoint,
   dragging,
   setDrag,
   tour,
   setTourStep
-}) {
+}: Props) {
   if (rows > 3) rows = 3;
   if (cols > 5) cols = 5;
 
@@ -28,10 +27,10 @@ export function AccordionShape({
   for (const id in renderAccordionShape(center, name, name)) {
     const [row, col] = splitID(id);
 
-    if (!grid[row]) continue;
-    if (!grid[row][col]) continue;
+    if (!grid[+row]) continue;
+    if (!grid[+row][+col]) continue;
 
-    grid[row][col].active = true;
+    grid[+row][+col].active = true;
   }
 
   return (
@@ -57,8 +56,6 @@ export function AccordionShape({
         shape={name}
         setExpanded={setExpanded}
         selectShape={selectShape}
-        dropShape={dropShape}
-        setHoverPoint={setHoverPoint}
         dragging={dragging}
         setDrag={setDrag}
         tour={tour}
@@ -81,4 +78,18 @@ export function AccordionShape({
       </span>
     </AccordionDetails>
   );
+}
+
+interface Props {
+  rows: number;
+  cols: number;
+  center: { row: number; col: number };
+  name: string;
+  label: string;
+  setExpanded: Dispatch<SetStateAction<boolean>>;
+  selectShape: Dispatch<SetStateAction<string>>;
+  dragging: boolean;
+  setDrag: Dispatch<SetStateAction<boolean>>;
+  tour: boolean;
+  setTourStep: Dispatch<SetStateAction<number>>;
 }

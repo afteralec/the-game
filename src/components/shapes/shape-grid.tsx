@@ -1,4 +1,5 @@
-import React from "react";
+import type { Dispatch, SetStateAction } from "react";
+import type { Grid } from "types";
 
 // App Component imports
 import ShapeGridCell from "./shape-grid-cell";
@@ -14,7 +15,7 @@ export function ShapeGrid({
   setDrag,
   tour,
   setTourStep
-}) {
+}: Props) {
   return (
     <div
       // Wrapper div for the entire shape
@@ -86,4 +87,16 @@ export function ShapeGrid({
       ))}
     </div>
   );
+}
+
+interface Props {
+  grid: Grid;
+  shape: string;
+  setExpanded: Dispatch<SetStateAction<boolean>>;
+  selectShape: Dispatch<SetStateAction<string>>;
+  style: Record<string, any>;
+  dragging: boolean;
+  setDrag: Dispatch<SetStateAction<boolean>>;
+  tour: boolean;
+  setTourStep: Dispatch<SetStateAction<number>>;
 }

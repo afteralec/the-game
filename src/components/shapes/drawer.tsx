@@ -1,4 +1,4 @@
-import React from "react";
+import type { Dispatch, SetStateAction, ReactElement } from "react";
 
 // Material UI Imports
 // import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -7,10 +7,8 @@ import Drawer from "@material-ui/core/Drawer";
 export function ShapesDrawer({
   renderedAccordionShapes,
   drawerOpen,
-  setDrawerOpen,
-  tour,
-  setTourStep
-}) {
+  setDrawerOpen
+}: Props) {
   // const _mobile = useMediaQuery("(max-width: 1023px)");
 
   return (
@@ -30,4 +28,10 @@ export function ShapesDrawer({
       {renderedAccordionShapes}
     </Drawer>
   );
+}
+
+interface Props {
+  renderedAccordionShapes: ReactElement[];
+  drawerOpen: boolean;
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
 }

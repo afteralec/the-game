@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import type { Dispatch, SetStateAction, SyntheticEvent } from "react";
+import type { ReactElement } from "react";
+import type { Dispatch, SetStateAction, ChangeEvent } from "react";
 import type { Grid } from "types";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { makeStyles } from "@material-ui/core/styles";
@@ -40,6 +41,7 @@ const useStyles = makeStyles(() => ({
 
 // Component for all the controls for the game
 export function Controls({
+  style,
   playing,
   pause,
   play,
@@ -49,7 +51,7 @@ export function Controls({
   setTourStep,
   setGrid,
   setDrawerOpen
-}: Props) {
+}: Props): ReactElement {
   const [sliderValue, setSliderValue] = useState(50),
     [playOnSliderMouseUp, setPlayOnSliderMouseUp] = useState(false);
 
@@ -78,10 +80,10 @@ export function Controls({
   }
 
   // Function called when the slider value changes
-  function sliderChange(event: SyntheticEvent, value: string) {
+  function sliderChange(event: ChangeEvent<{}>, value: number | number[]) {
     event.preventDefault();
 
-    setSliderValue(value);
+    setSliderValue(+value);
 
     // When the slider is changed, pause the game
     pause();
@@ -101,7 +103,7 @@ export function Controls({
     hideSpeedBar = useMediaQuery("(max-width: 450px)");
 
   return (
-    <>
+    <div style={style}>
       <AppBar position="fixed" color="primary" className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -181,7 +183,7 @@ export function Controls({
           </IconButton>
         </Toolbar>
       </AppBar>
-    </>
+    </div>
   );
 
   // return (
@@ -330,12 +332,13 @@ export function Controls({
 }
 
 interface Props {
+  style: Record<string, any>;
   playing: boolean;
   pause: () => void;
   play: () => void;
   clear: () => void;
   setTimeStep: Dispatch<SetStateAction<number>>;
-  tour: boolean;
+  tour: { play: boolean; clear: boolean; slider?: boolean };
   setTourStep: Dispatch<SetStateAction<number>>;
   setGrid: Dispatch<SetStateAction<Grid>>;
   setDrawerOpen: Dispatch<SetStateAction<boolean>>;

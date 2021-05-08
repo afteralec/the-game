@@ -4,11 +4,11 @@ import { shapes } from "data";
 // Function to, given a center point on the grid, render the ids of the rest
 //  of the shape's points
 export function renderShape(
-  { row, col }: { row: number; col: number },
+  { row, col }: { row?: number; col?: number },
   selectedShape: string,
   key = "main"
 ) {
-  if (!row || !col) return false;
+  if (!row || !col) return {};
 
   const shape: { [index: string]: boolean } = {};
 
@@ -26,7 +26,7 @@ export function renderAccordionShape(
   selectedShape: string,
   key: string
 ) {
-  if (!row || !col) return false;
+  if (!row || !col) return {};
 
   const shape: { [index: string]: boolean } = {};
 

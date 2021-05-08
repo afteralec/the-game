@@ -1,14 +1,11 @@
-import React from "react";
-
-// Material UI Component imports
+import type { SyntheticEvent } from "react";
+import type { SnackbarCloseReason } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
-import Button from "@material-ui/core/Button";
-import Snackbar from "@material-ui/core/Snackbar";
-import IconButton from "@material-ui/core/IconButton";
+import { Button, Snackbar, IconButton } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
 
 // Component to be used for any snackbar update to the user
-export function Snackbar({
+export function SnackbarComponent({
   key,
   anchorOrigin = { vertical: "top", horizontal: "center" },
   autoHideDuration,
@@ -19,14 +16,17 @@ export function Snackbar({
   buttonAction,
   closeAction,
   alert
-}) {
+}: Props) {
   // Component for using the experimental Material UI Alert API
-  function Alert(props) {
+  function Alert(props: any) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
 
   // Function to handle closing the snackbar
-  function handleClose(event, reason) {
+  function handleClose(
+    event?: SyntheticEvent<any, Event>,
+    reason?: SnackbarCloseReason
+  ) {
     if (reason === "clickaway" || alert) return;
 
     close();
@@ -83,4 +83,20 @@ export function Snackbar({
       }
     />
   );
+}
+
+interface Props {
+  key: string;
+  anchorOrigin?: {
+    vertical: "top" | "bottom";
+    horizontal: "center" | "left" | "right";
+  };
+  autoHideDuration?: number;
+  open?: boolean;
+  close: () => void;
+  message?: string;
+  buttonText?: string;
+  buttonAction?: () => void;
+  closeAction?: () => void;
+  alert?: string;
 }

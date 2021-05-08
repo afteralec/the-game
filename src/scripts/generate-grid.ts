@@ -1,7 +1,8 @@
 import { Cell } from "models";
+import type { Grid } from "types";
 
 // Function to create the matrix used to render the Game's grid
-export function generateGrid(rows = 25, cols = 50, key = "main") {
+export function generateGrid(rows = 25, cols = 50, key = "main"): Grid {
   const grid = [];
 
   for (let i = 0; i < rows; i++) {

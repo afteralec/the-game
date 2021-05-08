@@ -1,3 +1,5 @@
+import type { Shape } from "types";
+
 export const shapes: { [name: string]: Shape } = {
   acorn: {
     accordion: {
@@ -214,22 +216,5 @@ export const shapes: { [name: string]: Shape } = {
     ]
   }
 };
-
-interface Shape {
-  accordion?: AccordionShape;
-  rows: number;
-  cols: number;
-  center: { row: number; col: number };
-  name: string;
-  label: string;
-  coords: [number, number][];
-}
-
-interface AccordionShape {
-  rows: number;
-  cols: number;
-  center: { row: number; col: number };
-  coords: [number, number][];
-}
 
 export default shapes;
