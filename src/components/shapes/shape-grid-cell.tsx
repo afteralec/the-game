@@ -2,7 +2,7 @@ import React from "react";
 
 // Component intended as a visually identical Cell to the main grid -
 //   but without any of the functionality
-export default function ShapeGridCell({ active }) {
+export default function ShapeGridCell({ active }: Props) {
   return (
     <div
       // Outer square cell wrapper div
@@ -19,9 +19,13 @@ export default function ShapeGridCell({ active }) {
           height: "3.25vh",
           width: "3.25vh",
           borderRadius: "100%",
-          backgroundColor: active && "#333"
+          backgroundColor: active ? "#333" : undefined
         }}
       />
     </div>
   );
+}
+
+interface Props {
+  active: boolean;
 }
