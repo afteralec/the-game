@@ -1,10 +1,10 @@
-import React from "react";
-
-// Material UI Imports
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import Typography from "@material-ui/core/Typography";
+import type { Dispatch, SetStateAction, ReactElement } from "react";
+import {
+  useMediaQuery,
+  Accordion,
+  AccordionSummary,
+  Typography
+} from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 // Component to render the Accordion of prebuilt shapes at the top of the UI
@@ -14,7 +14,7 @@ export function ShapesAccordion({
   setDrawerOpen,
   tour,
   setTourStep
-}) {
+}: Props) {
   const mobile = useMediaQuery("(max-width: 1023px)");
 
   if (mobile) return <></>;
@@ -46,4 +46,12 @@ export function ShapesAccordion({
       </div>
     </Accordion>
   );
+}
+
+interface Props {
+  renderedAccordionShapes: ReactElement[];
+  drawerOpen: boolean;
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>;
+  tour: boolean;
+  setTourStep: Dispatch<SetStateAction<number>>;
 }
