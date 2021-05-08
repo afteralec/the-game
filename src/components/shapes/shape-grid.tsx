@@ -26,6 +26,10 @@ export function ShapeGrid({
         cursor: dragging ? "grabbing" : "grab",
         transitionProperty: "transform",
         transitionDuration: "250ms",
+        paddingLeft: "1.5rem",
+        paddingRight: "1.5rem",
+        paddingTop: "0.5rem",
+        paddingBottom: "0.5rem",
         ...style
       }}
       // Using mouseDown for custom drag and drop emulation
