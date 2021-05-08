@@ -1,15 +1,18 @@
+import type { Dispatch, SetStateAction } from "react";
+import type { Snackbar as SnackbarType } from "types";
+
 // Function to encapsulate all management of the current step of the app tour
 export function handleTourStep(
-  tourStep,
-  setTourStep,
-  setSnackbar,
-  clear,
-  setDrawerOpen
+  tourStep: number,
+  setTourStep: Dispatch<SetStateAction<number>>,
+  setSnackbar: Dispatch<SetStateAction<SnackbarType>>,
+  setDrawerOpen: Dispatch<SetStateAction<boolean>>,
+  clear: () => void
 ) {
   switch (tourStep) {
     // Tour step one
     case 1:
-      setSnackbar((snackbar) => ({
+      setSnackbar((snackbar: SnackbarType) => ({
         ...snackbar,
         key: new Date().getTime(),
         open: true,
