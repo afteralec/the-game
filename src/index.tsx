@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "./stylesheets/index.css";
 import "./stylesheets/reset.css";
 import "./stylesheets/animations.css";
 import App from "./App";

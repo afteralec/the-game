@@ -43,7 +43,7 @@ export default function App() {
 
   // Effect to moderate the tour and set the appropriate snackbar
   useEffect(() => {
-    handleTourStep(tourStep, setTourStep, setSnackbar, clear, setDrawerOpen);
+    handleTourStep(tourStep, setTourStep, setSnackbar, setDrawerOpen, clear);
 
     // In tour step two, set an interval to simulate cells activating and deactivating
     let tourCellInterval: NodeJS.Timer;
@@ -206,13 +206,14 @@ export default function App() {
       />
       <div
         style={{
-          marginTop: mobile ? "0" : "3vh",
+          // marginTop: mobile ? "0" : "3vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           cursor: dragging ? "grabbing" : "auto",
           overflow: mobile ? "hidden" : "",
-          position: mobile ? "fixed" : undefined
+          position: mobile ? "fixed" : undefined,
+          userSelect: "none"
         }}
         onTouchStart={(event) => {
           event.preventDefault();

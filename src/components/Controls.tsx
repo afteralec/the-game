@@ -10,11 +10,14 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Fab from "@material-ui/core/Fab";
-import MenuIcon from "@material-ui/icons/Menu";
-import PlayArrowRoundedIcon from "@material-ui/icons/PlayArrowRounded";
-import PauseRoundedIcon from "@material-ui/icons/PauseRounded";
-import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
-import CasinoRoundedIcon from "@material-ui/icons/Casino";
+import {
+  Menu as MenuIcon,
+  InboxRounded as InboxRoundedIcon,
+  PlayArrowRounded as PlayArrowRoundedIcon,
+  PauseRounded as PauseRoundedIcon,
+  CloseRounded as CloseRoundedIcon,
+  CasinoRounded as CasinoRoundedIcon
+} from "@material-ui/icons";
 import { seeds } from "data";
 import { renderSpeed } from "helpers";
 import { generateGrid } from "scripts";
@@ -114,7 +117,7 @@ export function Controls({
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+            <InboxRoundedIcon />
           </IconButton>
           <Fab
             color="secondary"
