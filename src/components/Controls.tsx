@@ -11,7 +11,6 @@ import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
 import Fab from "@material-ui/core/Fab";
 import {
-  Menu as MenuIcon,
   InboxRounded as InboxRoundedIcon,
   PlayArrowRounded as PlayArrowRoundedIcon,
   PauseRounded as PauseRoundedIcon,
