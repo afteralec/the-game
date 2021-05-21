@@ -95,6 +95,7 @@ export function Controls({
     if (playing) setPlayOnSliderMouseUp(true);
   }
 
+  // Updates the fundamental time step that the game is played at
   function updateTimeStep() {
     setTimeStep(1350 - sliderValue * 10);
     if (tour.slider) setTourStep((tourStep) => tourStep + 1);
